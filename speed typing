@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Speed Typing Test</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#6a11cb,#2575fc);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+
+.container{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    width:500px;
+    text-align:center;
+    box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+
+h1{
+    color:#2575fc;
+}
+
+#text{
+    font-size:20px;
+    background:#f3f3f3;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+textarea{
+    width:95%;
+    height:100px;
+    padding:10px;
+    border:2px solid #2575fc;
+    border-radius:10px;
+    font-size:16px;
+}
+
+button{
+    margin-top:15px;
+    padding:10px 25px;
+    border:none;
+    background:#2575fc;
+    color:white;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#6a11cb;
+}
+
+#result{
+    margin-top:15px;
+    font-size:20px;
+    font-weight:bold;
+    color:green;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>⌨️ Speed Typing Test</h1>
+
+    <div id="text">
+        Practice makes a person perfect in typing speed and accuracy.
+    </div>
+
+    <textarea id="input" placeholder="Start typing here..."></textarea>
+    <br>
+
+    <button onclick="startTest()">Start</button>
+    <button onclick="checkSpeed()">Finish</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+let startTime;
+
+function startTest(){
+    startTime = new Date().getTime();
+    document.getElementById("input").value="";
+    document.getElementById("result").innerHTML="";
+}
+
+function checkSpeed(){
+    let endTime = new Date().getTime();
+    let totalTime = (endTime - startTime)/1000/60;
+
+    let typedText = document.getElementById("input").value;
+    let words = typedText.trim().split(" ").length;
+
+    let speed = Math.round(words/totalTime);
+
+    document.getElementById("result").innerHTML =
+    "🚀 Your Speed: " + speed + " WPM";
+}
+</script>
+
+</body>
+</html>
